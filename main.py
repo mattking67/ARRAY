@@ -1,9 +1,13 @@
+import numpy as np
+
 
 array = []  # текущий массив программы
+rows = None
+cols = None
 
 
 def main():
-    global array
+    global array, rows, cols
     while True:
         print("\n===== МЕНЮ =====")
         print("1. Ввод размера массива")
@@ -13,9 +17,27 @@ def main():
         print("5. Выход")
         choice = input("Выберите пункт: ").strip()
         if choice == "1":
-            input_size()
+            rows, cols = input_size()
+            print(f"Размер массива: {rows} x {cols}")
         elif choice == "2":
-            print("создание массива")
+            if rows is None:
+                print("Сначала задайте размер массива (пункт 1)")
+                continue
+            print("1 — ввод вручную, 2 — автоматически, 3 — назад")
+            sub = input("Выберите вариант: ").strip()
+            if sub == "1":
+                array = create_manual(rows, cols)
+                print("Массив создан:")
+                print(array)
+            elif sub == "2":
+                array = create_auto(rows, cols)
+                print("Массив создан автоматически:")
+                print(array)
+            elif sub == "3":
+                pass
+            else:
+                print("Нет такого пункта")
+
         elif choice == "3":
             print("просмотр массива")
         elif choice == "4":
@@ -39,9 +61,21 @@ def input_size():
         rows = input_int("Количество строк: ")
         cols = input_int("Количество столбцов: ")
         if rows > 0 and cols > 0:
-            print(f'Массив {rows} x {cols} успешно создан.')
             return rows, cols
         print("Числа должны быть положительными!")
+
+def create_manual(rows, cols):
+    arr = np.zeros((rows, cols), dtype=int)
+    print("Вводите элементы построчно:")
+    for i in range(rows):
+        for j in range(cols):
+            arr[i, j] = input_int(f"Элемент [{i}][{j}] = ")
+    return arr
+
+
+def create_auto(rows, cols):
+    return np.random.randint(0, 101, (rows, cols))
+
 
 
 if __name__ == "__main__":
