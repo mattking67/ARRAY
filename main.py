@@ -102,6 +102,22 @@ def func_19(arr):
     print(res)
     return res
 
+def func_22(arr):
+    total = int(arr[arr % 2 == 0].sum())
+    print("Сумма четных элементов:", total)
+
+
+def func_28(arr):
+    values, counts = np.unique(arr, return_counts=True)
+    singles = values[counts == 1]
+    if singles.size == 0:
+        print("Неповторяющихся элементов нет")
+        return
+    print("Неповторяющиеся элементы и их индексы:")
+    for v in singles:
+        idx = np.argwhere(arr == v)
+        print(f"  {v} -> {idx.tolist()}")
+
 
 def functions_menu():
     global array
@@ -113,8 +129,8 @@ def functions_menu():
         print("а. Задание 16: номера строк, где есть элемент, равный 10")
         print("б. Задание 18: поменять местами первую и последнюю строки")
         print("в. Задание 19: поменять местами первый и последний столбцы")
-        print("г. ")
-        print("д. ")
+        print("г. Задание 22: сумма всех четных элементов")
+        print("д. Задание 28: неповторяющиеся элементы и их индексы")
         print("е. Назад")
         choice = input("Выберите пункт: ").strip().lower()
         if choice == "а":
@@ -123,6 +139,10 @@ def functions_menu():
             array = func_18(array)
         elif choice == "в":
             array = func_19(array)
+        elif choice == "г":
+            func_22(array)
+        elif choice == "д":
+            func_28(array)
         elif choice == "е":
             break
         else:
