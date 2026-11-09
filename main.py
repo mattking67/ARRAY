@@ -78,6 +78,38 @@ def create_manual(rows, cols):
 def create_auto(rows, cols):
     return np.random.randint(0, 101, (rows, cols))
 
+def func_16(arr):
+    found = False
+    for i in range(arr.shape[0]):
+        if np.any(arr[i] == 10):
+            print("Элемент 10 есть в строке", i)
+            found = True
+    if not found:
+        print("Строк с элементом, равным 10, нет")
+
+
+def functions_menu():
+    global array
+    if array is None:
+        print("Сначала создайте массив (пункты 1 и 2)")
+        return
+    while True:
+        print("\n--- Выполнение функций ---")
+        print("а. Задание 16: номера строк, где есть элемент, равный 10")
+        print("б. ")
+        print("в. ")
+        print("г. ")
+        print("д. ")
+        print("е. Назад")
+        choice = input("Выберите пункт: ").strip().lower()
+        if choice == "а":
+            func_16(array)
+        elif choice == "е":
+            break
+        else:
+            print("Нет такого пункта")
+        if choice != "е":
+            input("Нажмите Enter, чтобы продолжить...")
 
 
 if __name__ == "__main__":
