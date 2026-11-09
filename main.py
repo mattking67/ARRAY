@@ -13,7 +13,7 @@ def main():
         print("5. Выход")
         choice = input("Выберите пункт: ").strip()
         if choice == "1":
-            print("ввод размера")
+            input_size()
         elif choice == "2":
             print("создание массива")
         elif choice == "3":
@@ -25,6 +25,23 @@ def main():
             break
         else:
             print("Нет такого пункта")
+
+def input_int(prompt):
+    while True:
+        try:
+            return int(input(prompt))
+        except ValueError:
+            print("Введите целое число!")
+
+
+def input_size():
+    while True:
+        rows = input_int("Количество строк: ")
+        cols = input_int("Количество столбцов: ")
+        if rows > 0 and cols > 0:
+            print(f'Массив {rows} x {cols} успешно создан.')
+            return rows, cols
+        print("Числа должны быть положительными!")
 
 
 if __name__ == "__main__":
