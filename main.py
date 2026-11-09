@@ -43,7 +43,7 @@ def main():
             else:
                 print(array)
         elif choice == "4":
-            print("выполнение функций")
+            functions_menu()
         elif choice == "5":
             print("Программа завершена")
             break
@@ -87,6 +87,16 @@ def func_16(arr):
     if not found:
         print("Строк с элементом, равным 10, нет")
 
+def func_18(arr):
+    res = arr.copy()
+    res[[0, -1]] = res[[-1, 0]]
+    print("Массив после замены строк:")
+    print(res)
+    return res
+
+
+
+
 
 def functions_menu():
     global array
@@ -96,14 +106,17 @@ def functions_menu():
     while True:
         print("\n--- Выполнение функций ---")
         print("а. Задание 16: номера строк, где есть элемент, равный 10")
-        print("б. ")
-        print("в. ")
+        print("б. Задание 18: поменять местами первую и последнюю строки")
+
         print("г. ")
         print("д. ")
         print("е. Назад")
         choice = input("Выберите пункт: ").strip().lower()
         if choice == "а":
             func_16(array)
+        elif choice == "б":
+            array = func_18(array)
+
         elif choice == "е":
             break
         else:
