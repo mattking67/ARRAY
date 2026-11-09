@@ -95,7 +95,12 @@ def func_18(arr):
     return res
 
 
-
+def func_19(arr):
+    res = arr.copy()
+    res[:, [0, -1]] = res[:, [-1, 0]]
+    print("Массив после замены столбцов:")
+    print(res)
+    return res
 
 
 def functions_menu():
@@ -107,7 +112,7 @@ def functions_menu():
         print("\n--- Выполнение функций ---")
         print("а. Задание 16: номера строк, где есть элемент, равный 10")
         print("б. Задание 18: поменять местами первую и последнюю строки")
-
+        print("в. Задание 19: поменять местами первый и последний столбцы")
         print("г. ")
         print("д. ")
         print("е. Назад")
@@ -116,7 +121,8 @@ def functions_menu():
             func_16(array)
         elif choice == "б":
             array = func_18(array)
-
+        elif choice == "в":
+            array = func_19(array)
         elif choice == "е":
             break
         else:
