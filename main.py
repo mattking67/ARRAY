@@ -37,9 +37,11 @@ def main():
                 pass
             else:
                 print("Нет такого пункта")
-
         elif choice == "3":
-            print("просмотр массива")
+            if array is None:
+                print("Массив еще не создан")
+            else:
+                print(array)
         elif choice == "4":
             print("выполнение функций")
         elif choice == "5":
