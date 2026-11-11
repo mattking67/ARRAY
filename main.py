@@ -1,13 +1,9 @@
 import numpy as np
 
 
-array = []  # текущий массив программы
-rows = None
-cols = None
-
-
 def main():
-    global array, rows, cols
+    array = None
+    rows = cols = None
     while True:
         print("\n===== МЕНЮ =====")
         print("1. Ввод размера массива")
@@ -43,7 +39,7 @@ def main():
             else:
                 print(array)
         elif choice == "4":
-            functions_menu()
+            functions_menu(array)
         elif choice == "5":
             print("Программа завершена")
             break
@@ -119,9 +115,8 @@ def func_28(arr):
         print(f"  {v} -> {idx.tolist()}")
 
 
-def functions_menu():
-    global array
-    if array is None:
+def functions_menu(arr):
+    if arr is None:
         print("Сначала создайте массив (пункты 1 и 2)")
         return
     while True:
@@ -134,15 +129,15 @@ def functions_menu():
         print("е. Назад")
         choice = input("Выберите пункт: ").strip().lower()
         if choice == "а":
-            func_16(array)
+            func_16(arr)
         elif choice == "б":
-            array = func_18(array)
+            arr = func_18(arr)
         elif choice == "в":
-            array = func_19(array)
+            arr = func_19(arr)
         elif choice == "г":
-            func_22(array)
+            func_22(arr)
         elif choice == "д":
-            func_28(array)
+            func_28(arr)
         elif choice == "е":
             break
         else:
